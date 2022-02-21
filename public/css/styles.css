@@ -1,0 +1,10 @@
+
+@media (min-width: 640px) {
+
+    .navs {
+        flex:2;
+    }
+    .main-section {
+        flex: 8;
+    }
+}
