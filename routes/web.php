@@ -17,13 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+//Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//    return view('dashboard');
+//})->name('dashboard');
+
+Route::group(['auth:sanctum', 'verified'], function() {
+    Route::get('dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');;
+});
 
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('users', \App\Http\Controllers\UserController::class);
     Route::resource('posts', \App\Http\Controllers\PostController::class);
+    Route::post('uploadPost', [\App\Http\Controllers\PostController::class, 'uploadPost'])->name('posts.uploadPost');
 });
 
 

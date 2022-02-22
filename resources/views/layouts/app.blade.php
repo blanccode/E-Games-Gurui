@@ -36,11 +36,10 @@
 
             <!-- Page Content -->
             <main class="sm:flex justify-between max-w-7xl mx-auto pt-4">
-                <livewire:left-nav />
 
                 {{ $slot }}
 
-                <livewire:right-nav/>
+
 
             </main>
         </div>

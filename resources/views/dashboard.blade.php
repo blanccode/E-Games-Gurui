@@ -1,19 +1,29 @@
 <x-app-layout class="">
+    <livewire:left-nav />
 
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-    <div class=" main-section rounded-xl ">
-        <livewire:news-section />
+    <div class="p-5 main-section rounded-xl bg-white" >
 
-        <div class=" rounded-lg  bg-white">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                {{--<x-jet-welcome />--}}
-                <livewire:post />
+        <div class="py-5">
+            @foreach($posts as $post)
 
-            </div>
+                <h1>{{$post['text']}}</h1>
+
+
+                @if(!empty($post->image))
+                    <img width="320px" src="{{url('storage/images/' . $post->image)}}"/>
+
+                @endif
+                @if(!empty($post->video))
+                    <video width="320" height="240" controls>
+                        <source src="{{url('storage/videos/' . $post->video)}}" type="video/mp4">
+                        <source src="{{url('storage/videos/' . $post->video)}}" type="video/ogg">
+                        Your browser does not support the video tag.
+                    </video>
+
+                @endif
+
+            @endforeach
         </div>
     </div>
+    <livewire:right-nav />
 </x-app-layout>
