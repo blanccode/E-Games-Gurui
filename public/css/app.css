@@ -1039,9 +1039,6 @@ select {
 .-mt-px {
   margin-top: -1px;
 }
-.ml-5 {
-  margin-left: 1.25rem;
-}
 .block {
   display: block;
 }
@@ -1222,9 +1219,6 @@ select {
 .justify-between {
   justify-content: space-between;
 }
-.justify-items-end {
-  justify-items: end;
-}
 .gap-6 {
   gap: 1.5rem;
 }
@@ -1251,9 +1245,6 @@ select {
 }
 .self-end {
   align-self: flex-end;
-}
-.justify-self-end {
-  justify-self: end;
 }
 .overflow-hidden {
   overflow: hidden;
@@ -1412,17 +1403,9 @@ select {
 .bg-no-repeat {
   background-repeat: no-repeat;
 }
-.object-contain {
-  -o-object-fit: contain;
-     object-fit: contain;
-}
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
-}
-.object-fill {
-  -o-object-fit: fill;
-     object-fit: fill;
 }
 .object-scale-down {
   -o-object-fit: scale-down;
@@ -1432,10 +1415,6 @@ select {
   -o-object-position: bottom;
      object-position: bottom;
 }
-.object-right-bottom {
-  -o-object-position: right bottom;
-     object-position: right bottom;
-}
 .p-2 {
   padding: 0.5rem;
 }
@@ -1444,9 +1423,6 @@ select {
 }
 .p-5 {
   padding: 1.25rem;
-}
-.p-1 {
-  padding: 0.25rem;
 }
 .px-4 {
   padding-left: 1rem;
