@@ -960,6 +960,9 @@ select {
 .col-span-6 {
   grid-column: span 6 / span 6;
 }
+.m-5 {
+  margin: 1.25rem;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1035,6 +1038,9 @@ select {
 }
 .-mt-px {
   margin-top: -1px;
+}
+.ml-5 {
+  margin-left: 1.25rem;
 }
 .block {
   display: block;
@@ -1195,6 +1201,9 @@ select {
 .flex-row {
   flex-direction: row;
 }
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
 .flex-col {
   flex-direction: column;
 }
@@ -1212,6 +1221,9 @@ select {
 }
 .justify-between {
   justify-content: space-between;
+}
+.justify-items-end {
+  justify-items: end;
 }
 .gap-6 {
   gap: 1.5rem;
@@ -1236,6 +1248,12 @@ select {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+.self-end {
+  align-self: flex-end;
+}
+.justify-self-end {
+  justify-self: end;
 }
 .overflow-hidden {
   overflow: hidden;
@@ -1374,17 +1392,13 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
-.bg-blue-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(30 58 138 / var(--tw-bg-opacity));
-}
-.bg-gray-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
-}
 .bg-gray-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+}
+.bg-blue-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 58 138 / var(--tw-bg-opacity));
 }
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
@@ -1398,9 +1412,29 @@ select {
 .bg-no-repeat {
   background-repeat: no-repeat;
 }
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+.object-fill {
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+.object-scale-down {
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+}
+.object-bottom {
+  -o-object-position: bottom;
+     object-position: bottom;
+}
+.object-right-bottom {
+  -o-object-position: right bottom;
+     object-position: right bottom;
 }
 .p-2 {
   padding: 0.5rem;
@@ -1410,6 +1444,9 @@ select {
 }
 .p-5 {
   padding: 1.25rem;
+}
+.p-1 {
+  padding: 0.25rem;
 }
 .px-4 {
   padding-left: 1rem;
@@ -1466,10 +1503,6 @@ select {
 .py-10 {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
-}
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
 }
 .pt-6 {
   padding-top: 1.5rem;

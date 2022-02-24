@@ -27,10 +27,11 @@
     <hr>
 
     {{-- The best athlete wants his opponent at his best. --}}
-    <div class="py-5">
+    <div class="py-5 border-2 rounded-xl">
         @foreach($posts as $post)
 
             <h1>{{$post['text']}}</h1>
+
 
 
             @if(!empty($post->image))
@@ -38,7 +39,7 @@
 
             @endif
             @if(!empty($post->video))
-                <video width="320" height="240" controls>
+                <video class="w-full object-bottom" width="320" height="240" controls>
                     <source src="{{url('storage/videos/' . $post->video)}}" type="video/mp4">
                     <source src="{{url('storage/videos/' . $post->video)}}" type="video/ogg">
                     Your browser does not support the video tag.
@@ -46,8 +47,35 @@
 
             @endif
 
+            <div >
+                <div class="py-3 w-full flex-col justify-between">
+                    {{--        <h1>{{$post->id}}</h1>--}}
+                    <form wire:submit.prevent="createComment({{ $post->id }})">
+                        <textarea placeholder="make a comment here" class="w-full" wire:model="comment" type="text"></textarea>
+                        <button class="rounded bg-gray-900 px-4 py-2 text-white" type="submit">Comment</button>
+                    </form>
+
+                </div>
+
+                @foreach($post->comments as $postComment)
+                    <div class="rounded border-2 border-gray-100">
+                        {{--        <h1>{{$postComment->id}}</h1>--}}
+                        <h1>{{$postComment->comment}}</h1>
+                        {{--        <h1>postId = {{$postComment->post_id  }}</h1>--}}
+                    </div>
+
+
+                @endforeach
+            </div>
+
+
+
+
         @endforeach
+
+
     </div>
 
+    <livewire:show-comment />
 
 </div>

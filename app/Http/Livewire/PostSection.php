@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Comment;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Http\Request;
@@ -16,6 +17,24 @@ class PostSection extends Component
     public Post $post;
     public $image = null;
     public $video;
+    public $comment;
+
+//    protected $rules = [
+//        'comment' => 'nullable|required|string|max:255',
+//
+//    ];
+
+    public function createComment($id) {
+//        $this->validate();
+        $data = [
+            'comment' => $this->comment,
+            'post_id' => $id,
+
+        ];
+//        dd($data);
+        Comment::create($data);
+    }
+
 
     protected $rules = [
         'post.text' => 'nullable|required|string|max:255',
@@ -96,8 +115,11 @@ class PostSection extends Component
     }
     public function render()
     {
+
+//                    $posts = auth()->user()->posts();
+
         return view('livewire.post-section',[
-            'posts' => User::find(1)->posts,
+            'posts' => auth()->user()->posts,
         ]);
     }
 }
