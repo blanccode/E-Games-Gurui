@@ -16,7 +16,7 @@ class ShowComment extends Component
 
 //        dd(auth()->user()->id);
         return view('livewire.show-comment',[
-            'comments' => Post::find(auth()->user()->id)->comments,
+//            'comments' => Post::find(auth()->user()->id)->comments,
         ]);
     }
 }
