@@ -5,19 +5,21 @@
             <div class=" border-2 border-gray-100">
                 <h1>{{$post['text']}}</h1>
 
+                <div class="post-cont">
+                    @if(!empty($post->image))
+                        <img class="post-image  "  src="{{url('storage/images/' . $post->image)}}"/>
 
-                @if(!empty($post->image))
-                    <img class="w-full object-scale-down" width="320px" src="{{url('storage/images/' . $post->image)}}"/>
+                    @endif
+                    @if(!empty($post->video))
+                        <video class=" post-vid w-full"  preload="metadata" controls>
+                            <source src="{{url('storage/videos/' . $post->video)}}" type="video/mp4">
+                            <source src="{{url('storage/videos/' . $post->video)}}" type="video/ogg">
+                            Your browser does not support the video tag.
+                        </video>
 
-                @endif
-                @if(!empty($post->video))
-                    <video class="w-full" width="320" height="240" preload="metadata" controls>
-                        <source src="{{url('storage/videos/' . $post->video)}}" type="video/mp4">
-                        <source src="{{url('storage/videos/' . $post->video)}}" type="video/ogg">
-                        Your browser does not support the video tag.
-                    </video>
+                    @endif
+                </div>
 
-                @endif
             </div>
 
             <div>
@@ -41,7 +43,6 @@
                 @endforeach
             </div>
 
-{{--            <livewire:show-comments/>--}}
 
 
         </div>

@@ -35,7 +35,7 @@
 
 
             @if(!empty($post->image))
-                <img width="320px" src="{{url('storage/images/' . $post->image)}}"/>
+                <img class="w-full" width="320px" src="{{url('storage/images/' . $post->image)}}"/>
 
             @endif
             @if(!empty($post->video))
