@@ -1,8 +1,8 @@
-<div class="p-6">
+<div class="p-6 ">
 
     <form class="pb-4"  wire:submit.prevent="createPost" >
         <div class="w-full py-3">
-            <label>Comment</label>
+            <label>Post</label>
             <input wire:model="post.text" class="w-full" type="text" name="text" placeholder="Enter Text">
         </div>
         <div >
@@ -39,7 +39,7 @@
 
             @endif
             @if(!empty($post->video))
-                <video class="w-full object-bottom" width="320" height="240" controls>
+                <video class="w-full object-bottom" width="320" height="240" preload="metadata" controls>
                     <source src="{{url('storage/videos/' . $post->video)}}" type="video/mp4">
                     <source src="{{url('storage/videos/' . $post->video)}}" type="video/ogg">
                     Your browser does not support the video tag.
@@ -48,14 +48,7 @@
             @endif
 
             <div >
-                <div class="py-3 w-full flex-col justify-between">
-                    {{--        <h1>{{$post->id}}</h1>--}}
-                    <form wire:submit.prevent="createComment({{ $post->id }})">
-                        <textarea placeholder="make a comment here" class="w-full" wire:model="comment" type="text"></textarea>
-                        <button class="rounded bg-gray-900 px-4 py-2 text-white" type="submit">Comment</button>
-                    </form>
 
-                </div>
 
                 @foreach($post->comments as $postComment)
                     <div class="rounded border-2 border-gray-100">
@@ -76,6 +69,5 @@
 
     </div>
 
-    <livewire:show-comment />
 
 </div>

@@ -1,4 +1,4 @@
-<x-app-layout class="">
+<x-app-layout class="text-white card-bg mx-3">
 
     <livewire:left-nav />
 
@@ -7,10 +7,10 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <div class=" main-section rounded-xl ">
+    <div class="mx-3 main-section card-bg rounded-xl ">
 
-        <div class=" rounded-lg  bg-white">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+        <div class=" rounded-lg  ">
+            <div class=" overflow-hidden shadow-xl sm:rounded-lg">
 
                 <livewire:post-section />
 
