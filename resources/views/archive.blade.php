@@ -1,4 +1,4 @@
-<x-app-layout class="text-white card-bg mx-3">
+<x-app-layout class=" card-bg mx-3">
 
     <livewire:left-nav />
 

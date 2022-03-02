@@ -17,16 +17,18 @@ class MakeCommentSection extends Component
 
     ];
 
-    public function createComment($id) {
-        $this->validate();
-        $data = [
-            'comment' => $this->comment,
-            'post_id' => $id,
-
-        ];
-//        dd($data);
-        Comment::create($data);
-    }
+//    public function createComment($id) {
+//
+//
+//        $this->validate();
+//        $data = [
+//            'comment' => $this->comment,
+//            'post_id' => $id,
+//
+//        ];
+////        dd($data);
+//        Comment::create($data);
+//    }
 
     public function render()
     {

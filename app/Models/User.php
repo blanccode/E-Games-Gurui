@@ -30,6 +30,10 @@ class User extends Authenticatable
         'profile_photo_path',
     ];
 
+    public function latestPosts() {
+        return $this->hasMany(Post::class)->latest();
+    }
+
     public function posts() {
 
         return $this->hasMany(Post::class);

@@ -1,17 +1,46 @@
 :root {
     --background: #13213F ;
     --card-bg: #17284F ;
+    --card-bg-100: #20376C ;
     --accent-bg: #26417E ;
+    --accent-blue:#1778F2;
 }
 
 .background {
     background-color: var(--background);
 }
+.burger-link:hover {
+    background-color: var(--accent-bg);
+
+}
+.border-accent {
+    border-color: var(--accent-blue);
+}
+.accent-blue {
+    background-color: var(--accent-blue);
+}
+
+.dropdown\:hover:hover {
+    background-color: var(--accent-bg);
+}
+/*.hover-bg{*/
+/*}*/
 .card-bg {
     background-color: var(--card-bg);
 }
+.card-bg-100 {
+    background-color: var(--card-bg-100);
+}
 .accent-bg {
     background-color: var(--accent-bg);
+}
+.rounded-t-xl {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+.rounded-b-xl {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 
 .post-cont {
@@ -32,6 +61,28 @@
     width: 100%;
 }
 
+textarea::placeholder {
+    color: #bababa;
+}
+.textarea {
+    outline: none;
+    border: 1px solid var(--accent-bg);
+    resize: vertical;
+}
+.archive-textarea {
+    outline: none;
+    border: 1px solid var(--accent-bg);
+    resize: vertical;
+}
+input[type="file"] {
+    display: none;
+}
+.file-icons {
+    display: inline-block;
+    padding: 1em  1em;
+    padding-top: .75em;
+    cursor: pointer;
+}
 
 
 @media (min-width: 640px) {

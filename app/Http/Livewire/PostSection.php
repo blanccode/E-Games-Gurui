@@ -75,6 +75,9 @@ class PostSection extends Component
 
         Post::create($data);
 
+        $this->post->text = '';
+        $this->video = 0;
+        $this->image = 0;
 
 
 
@@ -85,7 +88,7 @@ class PostSection extends Component
 //                    $posts = auth()->user()->posts();
 
         return view('livewire.post-section',[
-            'posts' => auth()->user()->posts,
+            'posts' => auth()->user()->latestPosts,
         ]);
     }
 }
