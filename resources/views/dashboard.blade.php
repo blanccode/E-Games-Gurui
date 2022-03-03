@@ -1,7 +1,7 @@
 <x-app-layout class="">
     <livewire:left-nav />
 
-    <div class="p-5 main-section rounded-xl card-bg mx-3" >
+    <div class="p-2.5 main-section rounded-xl card-bg sm:mx-3" >
 
         <livewire:dashboard-posts/>
     </div>

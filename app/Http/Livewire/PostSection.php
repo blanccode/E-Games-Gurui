@@ -18,11 +18,27 @@ class PostSection extends Component
     public $image = null;
     public $video = null;
     public $comment;
+    protected $listeners = ['imageFile' => 'handleChosenImg','videoFile' => 'handleChosenVideo'];
+    public $imageFile;
+    public $videoFile;
+
 
 //    protected $rules = [
 //        'comment' => 'nullable|required|string|max:255',
 //
 //    ];
+
+    public function handleChosenImg($imageChosenData) {
+        $this->imageFile = $imageChosenData[1];
+//        $this->image = $imageChosenData[0];
+
+//        dd($this->imageFile);
+    }
+    public function handleChosenVideo($videoChosenData) {
+        $this->videoFile = $videoChosenData;
+
+//        dd($this->videoFile);
+    }
 
     public function createComment($id) {
 //        $this->validate();
@@ -46,6 +62,7 @@ class PostSection extends Component
     {
         $this->post = new Post();
 
+
     }
 
     public function createPost( ) {
@@ -61,6 +78,7 @@ class PostSection extends Component
             'image' =>$this->image ? $this->image->hashName() : $this->image,
             'video' =>$this->video ? $this->video->hashName() : $this->video,
         ];
+//        dd($data);
 
         if (!empty($this->image)) {
             $this->image->store('public/images');
@@ -78,15 +96,14 @@ class PostSection extends Component
         $this->post->text = '';
         $this->video = 0;
         $this->image = 0;
-
+        $this->imageFile = '';
+        $this->videoFile = '';
 
 
     }
     public function render()
     {
-
 //                    $posts = auth()->user()->posts();
-
         return view('livewire.post-section',[
             'posts' => auth()->user()->latestPosts,
         ]);

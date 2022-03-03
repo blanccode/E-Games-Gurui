@@ -4,11 +4,11 @@
         <div class="py-5 ">
             <div class=" ">
                 <div class="flex">
-                    <img class="rounded-lg" src="{{$post->user->profile_photo_url}}">
+                    <img class="rounded-lg dashboard-user-img" width="64px" height="64px" style="object-fit: cover" src="{{$post->user->profile_photo_url}}">
 
                     <div class="pl-2 ">
                         <h1 class="lg:font-semibold lg:text-xl md:text-xl" >{{$post->user->name}}</h1>
-                        <p class="text-xs text-gray-300">{{$post->created_at->diffForHumans()}}</p>
+                        <p class="text-xs text-gray-400">{{$post->created_at->diffForHumans()}}</p>
                     </div>
 
 
@@ -52,7 +52,7 @@
                             <div x-bind:class="! open ? 'hidden' : ''" class="py-3 px-3 w-full flex-col text-gray-700 justify-between accent-bg">
                                 {{--                                    <h1>{{$post->id}}</h1>--}}
                                 <form wire:submit.prevent="createComment({{  $post->id }})">
-                                    <textarea class="card-bg-100 textarea w-full text-gray-200 rounded-lg" placeholder="make a comment here" class="w-full" wire:model.defer="comment" type="text"></textarea>
+                                    <textarea class="card-bg-100 textarea w-full text-gray-200 rounded-lg" placeholder="Add a comment..." class="w-full" wire:model.defer="comment" type="text"></textarea>
                                     <div class="flex justify-end">
                                         <button class="rounded-xl  px-4 py-2 text-white accent-blue" type="submit">Comment</button>
 
@@ -86,7 +86,7 @@
 
                     <div x-bind:class="! showComments ? 'hidden' : ''"  class="pt-4 flex items-start w-full pb-3">
                         <div class="flex pr-2">
-                            <img class="rounded-xl" width="50px" height="auto" src="{{$post->user->profile_photo_url}}">
+                            <img class="rounded-xl comment-user-img" src="{{$post->user->profile_photo_url}}">
 
                         </div>
                         <div class="flex-1 rounded-xl p-2 pt-0 accent-bg ">

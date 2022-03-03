@@ -34,6 +34,11 @@
 .accent-bg {
     background-color: var(--accent-bg);
 }
+
+.rounded-xxl {
+    border-radius: 1rem;
+    border-radius: 1rem;
+}
 .rounded-t-xl {
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
@@ -82,6 +87,20 @@ input[type="file"] {
     padding: 1em  1em;
     padding-top: .75em;
     cursor: pointer;
+}
+
+.dashboard-user-img {
+    width:64px;
+    height: 64px;
+}
+.comment-user-img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+}
+.archive-profile-img {
+    width:74px;
+    height: 74px;
 }
 
 

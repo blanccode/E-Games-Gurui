@@ -1,10 +1,43 @@
 <div class="p-6 ">
 
+    <div class="flex">
+        <img class="rounded-lg archive-profile-img mb-2" style="object-fit: cover"  height="64px" src="{{Auth::user()->getProfilePhotoUrlAttribute()}}" >
+
+
+        <div class="pl-2 ">
+            <h1 class="lg:font-semibold lg:text-xl md:text-xl" >{{Auth::user()->name}}</h1>
+{{--            <p class="text-xs text-gray-300">{{}}</p>--}}
+        </div>
+
+
+    </div>
+
+
     <form class="pb-4 rounded-xl card-bg-100 p-3"  wire:submit.prevent="createPost" >
 
 
         <div class="w-full ">
             <label>Post</label>
+            @if($imageFile)
+                <div class="rounded-t-xl" style="background-image: url('{{$imageFile}}');
+                    height: max-content;
+                    width: 100% ;
+                    height: 226px;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+
+                    " ></div>
+            @endif
+            @if($videoFile)
+                <video class="post-vid w-full rounded-t-xl" autoplay muted preload="metadata" >
+                    <source src="{{$videoFile}}#t=0.1" type="video/mp4">
+                    <source src="{{$videoFile}}#t=0.1" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+            @endif
+
+{{--            <img src="{{$imageFile}}"  >--}}
+
             <div class="flex justify-start items-center" >
                 <div class="  flex justify-between">
                     <label for="photo-file" class="file-icons">
@@ -14,8 +47,10 @@
                             <path d="M11.7103 10.0434L4.25 18.25H14.8664C15.7638 18.25 16.6244 17.8935 17.259 17.259C17.8935 16.6244 18.25 15.7638 18.25 14.8664V14.75C18.25 14.3423 18.0969 14.1856 17.8213 13.8838L14.295 10.0381C14.1307 9.85887 13.9307 9.71582 13.708 9.61812C13.4853 9.52042 13.2447 9.47021 13.0015 9.47071C12.7583 9.4712 12.5178 9.52238 12.2955 9.62099C12.0732 9.71959 11.8739 9.86345 11.7103 10.0434V10.0434Z" stroke="#E9E9E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
 
+{{--                        <img src="{{}}" >--}}
                     </label>
-                    <input id="photo-file" wire:model.lazy="image"  class="" type="file" name="image">
+                    <input id="photo-file" wire:model.lazy="image" wire:change="$emit('imageChosen')" data-image-chosen type="file" name="image">
+
                 </div>
                 <div class="flex justify-between ">
                     <label class="file-icons" for="video-file">
@@ -24,7 +59,7 @@
                         </svg>
 
                     </label>
-                    <input id="video-file" class="rounded-xl p-2" wire:model.lazy="video" type="file"  name="video">
+                    <input id="video-file" class="rounded-xl p-2" wire:model.lazy="video" wire:change="$emit('videoChosen')" data-video-chosen type="file"  name="video">
                 </div>
 
             </div>
@@ -128,3 +163,33 @@
 
 
 </div>
+
+<script>
+    Livewire.on('imageChosen', () => {
+
+        let imagePrewiev = document.querySelector('[data-image-chosen]')
+            let file = imagePrewiev.files[0];
+
+        const reader = new FileReader();
+            reader.onloadend = (e) => {
+                photoPreview = e.target.result;
+                Livewire.emit('imageFile', [file.name, reader.result])
+                console.log(file.name)
+
+            };
+            reader.readAsDataURL(file);
+    })
+    Livewire.on('videoChosen', () => {
+
+        let videoPrewiev = document.querySelector('[data-video-chosen]')
+        let videoFile = videoPrewiev.files[0];
+
+        const reader = new FileReader();
+            reader.onloadend = () => {
+                Livewire.emit('videoFile', reader.result)
+                console.log(reader.result)
+
+            };
+            reader.readAsDataURL(videoFile);
+    })
+</script>

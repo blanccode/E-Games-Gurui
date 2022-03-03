@@ -19,8 +19,10 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="//unpkg.com/alpinejs" defer></script>
+        @livewireScripts
+
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased background">
         <x-jet-banner />
 
         <div class="min-h-screen background text-white">
@@ -36,7 +38,7 @@
             @endif
 
             <!-- Page Content -->
-            <main class="sm:flex justify-between max-w-7xl mx-auto pt-4">
+            <main class="background sm:flex justify-between max-w-7xl mx-auto pt-4">
 
                 {{ $slot }}
 
@@ -47,6 +49,5 @@
 
         @stack('modals')
 
-        @livewireScripts
     </body>
 </html>
