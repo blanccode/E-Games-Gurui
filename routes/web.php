@@ -26,6 +26,9 @@ Route::group(['auth:sanctum', 'verified'], function() {
 });
 
 Route::group(['middleware' => 'auth'], function() {
+    Route::group(['middleware' => 'role:admin' , 'prefix' => 'admin', 'as' => 'admin.'], function () {
+        Route::resource('index', \App\Http\Controllers\Admin\UserController::class);
+    });
     Route::resource('users', \App\Http\Controllers\UserController::class);
     Route::resource('posts', \App\Http\Controllers\PostController::class);
     Route::post('uploadPost', [\App\Http\Controllers\PostController::class, 'uploadPost'])->name('posts.uploadPost');

@@ -63,7 +63,7 @@
                 </div>
 
             </div>
-            <textarea wire:model="post.text" class="accent-bg textarea w-full text-gray-200 rounded-lg" type="text" name="text" placeholder="Enter Text"></textarea>
+            <textarea wire:model="post.text" class="accent-bg textarea w-full text-gray-200 rounded-lg" type="text" name="text" required placeholder="Enter Text"></textarea>
         </div>
 
 
