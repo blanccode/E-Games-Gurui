@@ -1151,6 +1151,12 @@ select {
 .shrink-0 {
   flex-shrink: 0;
 }
+.basis-1\/12 {
+  flex-basis: 8.333333%;
+}
+.basis-1\/4 {
+  flex-basis: 25%;
+}
 .origin-top-left {
   transform-origin: top left;
 }
@@ -1201,9 +1207,6 @@ select {
 }
 .flex-row {
   flex-direction: row;
-}
-.flex-row-reverse {
-  flex-direction: row-reverse;
 }
 .flex-col {
   flex-direction: column;
@@ -1408,10 +1411,6 @@ select {
 .bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-}
-.bg-gray-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 .bg-blue-900 {
   --tw-bg-opacity: 1;

@@ -34,10 +34,21 @@ class User extends Authenticatable
     public function latestPosts() {
         return $this->hasMany(Post::class)->latest();
     }
+//    public function latestNews() {
+//        return $this->hasMany(News::class)->latest();
+//    }
+
+    public function latestAdminNews() {
+        return $this->hasMany(News::class)->latest();
+    }
 
     public function posts() {
 
         return $this->hasMany(Post::class);
+    }
+    public function news() {
+
+        return $this->hasMany(News::class);
     }
     public function roles() {
 

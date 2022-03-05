@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\News;
 use Livewire\Component;
 
 class NewsSection extends Component
 {
     public function render()
     {
-        return view('livewire.news-section');
+        $news = News::all();
+        return view('livewire.news-section', compact('news'));
     }
 }

@@ -2,7 +2,8 @@
     <livewire:left-nav />
 
     <div class="p-2.5 main-section rounded-xl card-bg sm:mx-3" >
-        <livewire:post-section/>
+
+        <livewire:news-post/>
     </div>
     <livewire:right-nav />
 </x-admin-app-layout>
