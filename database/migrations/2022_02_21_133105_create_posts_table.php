@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->text('text')->nullable();
             $table->string('video')->nullable();
             $table->string('image')->nullable();
+            $table->integer('like_count')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

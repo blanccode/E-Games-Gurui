@@ -5,7 +5,7 @@
             <div class="flex ">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('dashboard.index') }}">
                          <!-- LOGO HERE -->
                         <h1>E-Games-Guru</h1>
                     </a>
@@ -18,15 +18,51 @@
             <div class="sm:ml-10 sm:flex ">
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-jet-nav-link href="{{ route('dashboard.index') }}" :active="request()->routeIs('dashboard.index')">
+                        <img width="30px" src="{{url('svgs/home.svg')}}" >
+
+                        {{ __('News') }}
+                    </x-jet-nav-link>
+                </div>
+                <div  class="hidden text-white space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link  href="{{ route('contendership.index') }}" :active="request()->routeIs('contendership.index')">
+                        <img width="28px" src="{{url('svgs/ranking-icon.svg')}}" >
+
+                        {{ __('Contendership') }}
+
+
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden text-white space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                        {{ __('Archive') }}
+                        <img width="32px" src="{{url('svgs/profile.svg')}}" >
+
+                        {{ __('Profil') }}
                     </x-jet-nav-link>
                 </div>
+                <div class="hidden text-white space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('admin.products.index') }}" :active="request()->routeIs('admin.products.index')">
+                        <img class="pr-1" width="27px"  src="{{url('svgs/shop.svg')}}" >
+
+                        {{ __('Webshop') }}
+                    </x-jet-nav-link>
+                </div>
+
+                <div class="hidden text-white space-x-8 sm:-my-px sm:ml-10 sm:flex">
+
+                    @if(auth()->user() && auth()->user()->role_id === 1 )
+                        <x-jet-nav-link href="{{ route('admin.articles.index') }}" :active="request()->routeIs('admin.articles.index')">
+                            <img width="32px" src="{{url('svgs/article.svg')}}" >
+
+                            {{ __('Artikel') }}
+
+                        </x-jet-nav-link>
+
+                    @else
+
+                    @endif
+                </div>
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -54,7 +90,7 @@
                                     </div>
 
                                     <!-- Team Settings -->
-                                    <x-jet-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
+                                    <x-jet-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->artikel) }}">
                                         {{ __('Team Settings') }}
                                     </x-jet-dropdown-link>
 
@@ -109,14 +145,14 @@
                                 {{ __('Manage Account') }}
                             </div>
 
-                            <x-jet-dropdown-link class="text-gray-300" href="{{ route('dashboard') }}">
+                            <x-jet-dropdown-link class="text-gray-300" href="{{ route('dashboard.index') }}">
                                 {{ __('Dashboard') }}
                             </x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('users.index') }}">
                                 {{ __('Archive') }}
                             </x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('Manage your Account') }}
                             </x-jet-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -157,7 +193,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden card-bg">
         <div class="pt-2 pb-3 space-y-1 text-gray-100 card-bg">
-            <x-jet-responsive-nav-link class="burger-link text-gray-200" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            <x-jet-responsive-nav-link class="burger-link text-gray-200" href="{{ route('dashboard.index') }}" :active="request()->routeIs('dashboard.index')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link class="burger-link text-gray-200"  href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
@@ -183,7 +219,7 @@
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
+                    {{ __('Manage your Account') }}
                 </x-jet-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -212,7 +248,7 @@
                     </div>
 
                     <!-- Team Settings -->
-                    <x-jet-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" :active="request()->routeIs('teams.show')">
+                    <x-jet-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->artikel) }}" :active="request()->routeIs('teams.show')">
                         {{ __('Team Settings') }}
                     </x-jet-responsive-nav-link>
 

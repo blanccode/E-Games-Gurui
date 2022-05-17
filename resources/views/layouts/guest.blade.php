@@ -19,8 +19,24 @@
 
     </head>
     <body class="">
-        <div class=" font-sans text-gray-300 antialiased">
+    <div class="absolute z-50 text-gray-100 flex justify-end cursor-pointer w-full pr-20 pt-2">
+        <ul class="block flex">
+            <li>
+                @if( Request::is('login'))
+                    <a href="{{url('/register')}}">Register </a>
+
+                @else
+                    <a href="{{url('/register')}}">Login </a>
+
+                @endif
+            </li>
+        </ul>
+    </div>
+    <div class=" font-sans text-gray-300 antialiased relative z-30 ">
+
             {{ $slot }}
         </div>
+        <div class="login-bg"></div>
+
     </body>
 </html>

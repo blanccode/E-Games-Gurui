@@ -7,7 +7,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <div class="mx-3 main-section card-bg rounded-xl ">
+    <div class="mx-3 main-section card-bg rounded-xxl ">
 
         <div class=" rounded-lg  ">
             <div class=" overflow-hidden shadow-xl sm:rounded-lg">

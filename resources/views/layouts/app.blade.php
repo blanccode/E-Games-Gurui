@@ -18,7 +18,10 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="{{ 'js/script.js' }}" defer></script>
         <script src="//unpkg.com/alpinejs" defer></script>
+{{--        <script src="https://www.paypal.com/sdk/js?client-id=AToL4wcRci2DlMqF3MSyU1Y9Y0i00pJDyfrxJsSCdJ4y5gb7XE8k_VvmIrJBGHBxojnFHedvtdqW6nZd&currency=USD"></script>--}}
+
         @livewireScripts
 
     </head>
@@ -38,7 +41,7 @@
             @endif
 
             <!-- Page Content -->
-            <main class="background sm:flex justify-between max-w-7xl mx-auto pt-4">
+            <main class="background sm:flex justify-between mx-auto pt-4">
 
                 {{ $slot }}
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -45,7 +47,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+//        dd($user);
+        return view('users.show',compact('user'));
     }
 
     /**
@@ -79,6 +83,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect('users')->with('delete', 'Post was deleted successfully!');
     }
 }

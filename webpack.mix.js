@@ -11,11 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+mix.js(['resources/js/app.js', 'resources/js/script.js'], 'public/js')
+    .extract(['@paypal/paypal-js'])
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
     ]);
+// mix.js('@paypal/paypal-js', 'public/js/script')
 
 if (mix.inProduction()) {
     mix.version();

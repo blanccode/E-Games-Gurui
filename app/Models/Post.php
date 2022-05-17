@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +11,7 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-       'user_id', 'text','image', 'video'
+       'user_id', 'text','image', 'video', 'like_count'
     ];
 
     public function user() {
@@ -22,6 +23,18 @@ class Post extends Model
         return $this->hasMany(Comment::class);
 
     }
+    public function likes() {
+
+        return $this->hasMany(Like::class);
+
+    }
+
+//    public function getActiveAttribute($attribute) {
+//        return [
+//            0 => 'like',
+//            1 => 'unlike',
+//        ][$attribute];
+//    }
 
 
 }

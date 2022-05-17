@@ -13,7 +13,7 @@
             <!-- Token Name -->
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="name" value="{{ __('Token Name') }}" />
-                <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="createApiTokenForm.name" autofocus />
+                <x-jet-input artikel="name" type="text" class="mt-1 block w-full" wire:model.defer="createApiTokenForm.name" autofocus />
                 <x-jet-input-error for="name" class="mt-2" />
             </div>
 
@@ -76,12 +76,12 @@
                                     @endif
 
                                     @if (Laravel\Jetstream\Jetstream::hasPermissions())
-                                        <button class="cursor-pointer ml-6 text-sm text-gray-400 underline" wire:click="manageApiTokenPermissions({{ $token->id }})">
+                                        <button class="cursor-pointer ml-6 text-sm text-gray-400 underline" wire:click="manageApiTokenPermissions({{ $token->artikel }})">
                                             {{ __('Permissions') }}
                                         </button>
                                     @endif
 
-                                    <button class="cursor-pointer ml-6 text-sm text-red-500" wire:click="confirmApiTokenDeletion({{ $token->id }})">
+                                    <button class="cursor-pointer ml-6 text-sm text-red-500" wire:click="confirmApiTokenDeletion({{ $token->artikel }})">
                                         {{ __('Delete') }}
                                     </button>
                                 </div>
@@ -101,7 +101,7 @@
 
         <x-slot name="content">
             <div>
-                {{ __('Please copy your new API token. For your security, it won\'t be shown again.') }}
+                {{ __('Please copy your article API token. For your security, it won\'t be shown again.') }}
             </div>
 
             <x-jet-input x-ref="plaintextToken" type="text" readonly :value="$plainTextToken"

@@ -3,7 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\Comment;
+use App\Models\Like;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\Post;
@@ -14,7 +16,7 @@ class PostSection extends Component
 {
     use WithFileUploads;
 
-    public Post $post;
+    public Post $newsInput;
     public $image = null;
     public $video = null;
     public $comment;
@@ -40,14 +42,48 @@ class PostSection extends Component
 //        dd($this->videoFile);
     }
 
+    public function like($postId, $likeCount ) {
+
+        $post = Post::where('id',$postId)->first();
+        $user = Auth::user();
+
+        $likeRow = $user->likes()->where('post_id', $postId)->first();
+
+        if (!$likeRow) {
+            Like::create([
+                'user_id' => $user->id,
+                'post_id' => $postId,
+                'like' => true,
+            ]);
+
+            $this->isLiked = true;
+            $likeCount++;
+            $this->likes = $likeCount;
+        } else {
+            ///// User already liked current Post /////
+            $likeRow->delete();
+
+            $likeCount--;
+            $this->likes = $likeCount;
+
+        }
+
+
+
+//        $post->like_count
+    }
+
+
+
     public function createComment($id) {
-//        $this->validate();
+        $user = Auth::user();
         $data = [
             'comment' => $this->comment,
             'post_id' => $id,
-
+            'user_id' => $user->id,
         ];
         Comment::create($data);
+        $this->comment = '';
     }
 
 
@@ -65,7 +101,7 @@ class PostSection extends Component
 
     }
 
-    public function createPost( ) {
+    public function createAdminPost( ) {
 
 //        dd($this);
 
@@ -88,14 +124,11 @@ class PostSection extends Component
 
         }
 
-//        dd($data);
-
-
         Post::create($data);
 
         $this->post->text = '';
-        $this->video = 0;
-        $this->image = 0;
+        $this->video = '';
+        $this->image = '';
         $this->imageFile = '';
         $this->videoFile = '';
 

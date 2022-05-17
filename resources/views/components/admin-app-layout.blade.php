@@ -18,7 +18,11 @@
 
 <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="{{ asset('js/script.js') }}" defer></script>
+
+    {{--    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v1.10.1/dist/alpine.js" defer></script>--}}
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     @livewireScripts
 
 </head>
@@ -31,7 +35,7 @@
 
 
 <!-- Page Content -->
-    <main class="background sm:flex justify-between max-w-7xl mx-auto pt-4">
+    <main class="background sm:flex justify-between mx-auto pt-4">
 
         {{ $slot }}
 

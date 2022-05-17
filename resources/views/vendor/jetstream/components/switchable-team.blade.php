@@ -5,7 +5,7 @@
     @csrf
 
     <!-- Hidden Team ID -->
-    <input type="hidden" name="team_id" value="{{ $team->id }}">
+    <input type="hidden" name="team_id" value="{{ $team->artikel }}">
 
     <x-dynamic-component :component="$component" href="#" onclick="event.preventDefault(); this.closest('form').submit();">
         <div class="flex items-center">

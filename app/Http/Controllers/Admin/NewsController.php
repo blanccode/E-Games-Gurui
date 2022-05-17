@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -14,7 +16,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view('admin.news');
+
+        $articles = auth()->user()->latestAdminArticles;
+        return view('admin.artikels', compact('articles'));
     }
 
     /**
@@ -44,9 +48,20 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($article)
     {
-        //
+//        dd($article);
+        $currentArticle = Article::find($article);
+//        $this->id = $id;
+//        dd($currentArticle);
+        return view('admin.article.show', compact('currentArticle'));
+    }
+
+    public function feature($id) {
+        $oldFeaturedArticle = Article::where('featured_article', 1)->update(['featured_article' => 0]);
+        $chosenFeaturedArticle = Article::find($id)->update(['featured_article' => 1]);
+        return back();
+
     }
 
     /**
@@ -78,8 +93,12 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($article)
     {
-        //
+
+//        dd($article);
+        $article = Article::find($article);
+        $article->delete();
+        return redirect('/admin/articles')->with('delete', 'Article was deleted successfully!');
     }
 }

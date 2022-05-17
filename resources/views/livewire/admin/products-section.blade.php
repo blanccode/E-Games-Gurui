@@ -13,12 +13,14 @@
     </div>
 
 
-    <form class="pb-4 rounded-xl card-bg-100 p-3"  wire:submit.prevent="createNews" >
+    <form class="pb-4 rounded-xl card-bg-100 p-3"  wire:submit.prevent="createAdminProduct" >
 
 
         <div class="w-full ">
-            <label>Add News</label>
-            @if($imageFile)
+            <label class="font-semibold" >Add your Merch</label>
+            <input wire:model.defer="productInput.name" class="accent-bg input-filler-color textarea w-full text-gray-200 rounded-lg" type="text" name="text" required placeholder="Enter Text"></input>
+
+        @if($imageFile)
                 <div class="rounded-t-xl" style="background-image: url('{{$imageFile}}');
                     height: max-content;
                     width: 100% ;
@@ -49,7 +51,7 @@
 
                         {{--                        <img src="{{}}" >--}}
                     </label>
-                    <input id="photo-file" wire:model.lazy="image" wire:change="$emit('imageChosen')" data-image-chosen type="file" name="image">
+                    <input artikel="photo-file" wire:model.lazy="image" wire:change="$emit('imageChosen')" data-image-chosen type="file" name="image">
 
                 </div>
                 <div class="flex justify-between ">
@@ -59,11 +61,11 @@
                         </svg>
 
                     </label>
-                    <input id="video-file" class="rounded-xl p-2" wire:model.lazy="video" wire:change="$emit('videoChosen')" data-video-chosen type="file"  name="video">
+                    <input artikel="video-file" class="rounded-xl p-2" wire:model.lazy="video" wire:change="$emit('videoChosen')" data-video-chosen type="file"  name="video">
                 </div>
 
             </div>
-            <textarea wire:model="newsInput.text" class="accent-bg textarea w-full text-gray-200 rounded-lg" type="text" name="text" required placeholder="Enter Text"></textarea>
+            <textarea wire:model.defer="productInput.text" class="accent-bg textarea w-full text-gray-200 rounded-lg" type="text" name="text" required placeholder="Enter Description"></textarea>
         </div>
 
 
@@ -76,22 +78,22 @@
 
     {{-- The best athlete wants his opponent at his best. --}}
     <div class="py-5  rounded-xl">
-        @foreach($news as $new)
+        @foreach($products as $product)
 
-            <h1 class="py-2 md:text-sm md:font-semibold">{{$new->text}}</h1>
+            <h1 class="py-2 md:text-sm md:font-semibold">{{$product->text}}</h1>
 
 
 
             <div class="post-cont">
 
-                @if(!empty($new->image))
-                    <img class="post-image rounded-t-xl "  src="{{url('storage/news/images/' . $new->image)}}"/>
+                @if(!empty($product->image))
+                    <img class="post-image rounded-t-xl cursor-pointer"  src="{{url('storage/articles/images/' . $product->image)}}"/>
 
                 @endif
-                @if(!empty($new->video))
-                    <video class="post-vid w-full rounded-t-xl"  preload="metadata" controls>
-                        <source src="{{url('storage/news/videos/' . $new->video)}}#t=0.1" type="video/mp4">
-                        <source src="{{url('storage/news/videos/' . $new->video)}}#t=0.1" type="video/ogg">
+                @if(!empty($product->video))
+                    <video class="post-vid w-full rounded-t-xl cursor-pointer"  preload="metadata" controls>
+                        <source src="{{url('storage/articles/videos/' . $product->video)}}#t=0.1" type="video/mp4">
+                        <source src="{{url('storage/articles/videos/' . $product->video)}}#t=0.1" type="video/ogg">
                         Your browser does not support the video tag.
                     </video>
 
@@ -111,8 +113,8 @@
 
                 </ul>
                 <div x-bind:class="! open ? 'hidden' : ''" class="py-3 px-3 w-full flex-col text-gray-700 justify-between accent-bg">
-                    {{--                                    <h1>{{$new->id}}</h1>--}}
-                    <form wire:submit.prevent="createComment({{  $new->id }})">
+                    {{--                                    <h1>{{$product->artikel}}</h1>--}}
+                    <form wire:submit.prevent="createComment({{  $product->artikel }})">
                         <textarea class="card-bg-100 textarea w-full text-gray-200 rounded-lg" placeholder="make a comment here" class="w-full" wire:model.defer="comment" type="text"></textarea>
                         <div class="flex justify-end">
                             <button class="rounded-xl  px-4 py-2 text-white accent-blue" type="submit">Comment</button>
@@ -123,36 +125,36 @@
 
             </div>
 
-{{--            @php $commentsCounter = 0 @endphp--}}
+            {{--            @php $commentsCounter = 0 @endphp--}}
 
-{{--            @foreach($new->comments as $newComment)--}}
-{{--                @php $commentsCounter++ @endphp--}}
-{{--            @endforeach--}}
+            {{--            @foreach($product->comments as $newComment)--}}
+            {{--                @php $commentsCounter++ @endphp--}}
+            {{--            @endforeach--}}
 
-{{--            <div class="card-bg-100 rounded-b-xl py-2 px-3" x-data="{ showComments:false}">--}}
+            {{--            <div class="card-bg-100 rounded-b-xl py-2 px-3" x-data="{ showComments:false}">--}}
 
-{{--                <div class=" flex justify-end">--}}
-{{--                    <button x-on:click="showComments = ! showComments" class="text-sm">{{$commentsCounter != 0 ? $commentsCounter . ' Comments' : ''}} </button>--}}
-{{--                </div>--}}
+            {{--                <div class=" flex justify-end">--}}
+            {{--                    <button x-on:click="showComments = ! showComments" class="text-sm">{{$commentsCounter != 0 ? $commentsCounter . ' Comments' : ''}} </button>--}}
+            {{--                </div>--}}
 
-{{--                @foreach($post->comments as $postComment)--}}
-
-
-{{--                    <div x-bind:class="! showComments ? 'hidden' : ''"  class="pt-4 flex items-start w-full pb-3">--}}
-{{--                        <div class="flex pr-2">--}}
-{{--                            <img class="rounded-xl" width="50px" height="auto" src="{{$post->user->profile_photo_url}}">--}}
-
-{{--                        </div>--}}
-{{--                        <div class="flex-1 rounded-xl p-2 pt-0 accent-bg ">--}}
-{{--                            <h2 class="font-medium">{{$post->user->name}}:</h2>--}}
-
-{{--                            <p class="self-end text-sm">{{$postComment->comment}}</p>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+            {{--                @foreach($post->comments as $postComment)--}}
 
 
-{{--                @endforeach--}}
-{{--            </div>--}}
+            {{--                    <div x-bind:class="! showComments ? 'hidden' : ''"  class="pt-4 flex items-start w-full pb-3">--}}
+            {{--                        <div class="flex pr-2">--}}
+            {{--                            <img class="rounded-xl" width="50px" height="auto" src="{{$post->user->profile_photo_url}}">--}}
+
+            {{--                        </div>--}}
+            {{--                        <div class="flex-1 rounded-xl p-2 pt-0 accent-bg ">--}}
+            {{--                            <h2 class="font-medium">{{$post->user->name}}:</h2>--}}
+
+            {{--                            <p class="self-end text-sm">{{$postComment->comment}}</p>--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+
+
+            {{--                @endforeach--}}
+            {{--            </div>--}}
 
 
 
@@ -170,7 +172,7 @@
         let imagePrewiev = document.querySelector('[data-image-chosen]')
         let file = imagePrewiev.files[0];
 
-        const reader = new FileReader();
+        const reader = article FileReader();
         reader.onloadend = (e) => {
             photoPreview = e.target.result;
             Livewire.emit('imageFile', [file.name, reader.result])
@@ -184,7 +186,7 @@
         let videoPrewiev = document.querySelector('[data-video-chosen]')
         let videoFile = videoPrewiev.files[0];
 
-        const reader = new FileReader();
+        const reader = article FileReader();
         reader.onloadend = () => {
             Livewire.emit('videoFile', reader.result)
             console.log(reader.result)

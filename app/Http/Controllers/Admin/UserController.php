@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -46,7 +47,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $currentPost = Post::find($id);
+//        $this->id = $id;
+//        dd($currentPost->id);
+        return view('admin.posts.show', compact('currentPost'));
     }
 
     /**
@@ -80,6 +84,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect('admin/archive')->with('delete', 'Post was deleted successfully!');
     }
 }

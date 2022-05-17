@@ -1,7 +1,7 @@
-@props(['id', 'maxWidth'])
+@props(['artikel', 'maxWidth'])
 
 @php
-$id = $id ?? md5($attributes->wire('model'));
+$artikel = $artikel ?? md5($attributes->wire('model'));
 
 $maxWidth = [
     'sm' => 'sm:max-w-sm',
@@ -43,7 +43,7 @@ $maxWidth = [
     x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()"
     x-on:keydown.shift.tab.prevent="prevFocusable().focus()"
     x-show="show"
-    id="{{ $id }}"
+    artikel="{{ $artikel }}"
     class="jetstream-modal fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50"
     style="display: none;"
 >

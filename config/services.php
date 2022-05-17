@@ -29,5 +29,16 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'youtube' => [
+        'api_key' => env('API_KEY'),
+        'channels_endpoint' => env('CHANNELS_ENDPOINT'),
+        'search_endpoint' => env('SEARCH_ENDPOINT'),
+        'playlist_endpoint' => env('PLAYLIST_ENDPOINT'),
+    ],
+    'twitch' => [
+        'client_id' => env('TWITCH_CLIENT_ID'),
+        'client_secret' => env('TWITCH_CLIENT_SECRET'),
+        'endpoint' => env('TWITCH_ENDPOINT'),
+    ]
 
 ];
