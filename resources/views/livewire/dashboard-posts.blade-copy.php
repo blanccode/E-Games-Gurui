@@ -109,7 +109,10 @@
                                                 <img width="28px" height="auto" src="{{url('svgs/fb-icon.svg')}}">
 
                                             </a>
+                                            <a   class="twitter-share-button" target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost/posts/{{$post->id}}" >
+                                                <img width="28px" height="auto" src="{{url('svgs/linkedin-icon.svg')}}">
 
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -244,61 +247,7 @@
                         </form>
                     </div>
                 </div>
-
-                @foreach($postComment->replies as $reply)
-                    <div class=" round">
-                        <div  x-bind:class="! showComments ? 'hidden' : ''"  class="pt-4 flex items-start justify-end pb-3">
-
-                            <div  class="w-10/12 flex justify-between rounded-xl p-2 px-3  accent-bg ">
-                                <div>
-                                    <h2 class="font-medium">{{$reply->user->name}}:</h2>
-
-                                    <p class="self-end text-sm">{{$reply->comment}}</p>
-
-                                </div>
-
-                                <div class="self-end " >
-
-                                @isset($postComment->commentLikes)
-                                    @php $commentLikeCount=0 @endphp
-                                    @foreach($postComment->commentLikes as $key => $like)
-                                        @php $commentLikeCount++ @endphp
-                                    @endforeach
-
-                                @endisset
-
-                                </div>
-
-                            </div>
-
-                            <div class="flex pl-2">
-                                <img class="rounded-xl comment-user-img" src="{{$reply->user->profile_photo_url}}">
-
-                            </div>
-                        </div>
-{{--                        <div x-bind:class="! showReplyWindow ? 'hidden' : ''">--}}
-
-{{--                            <form method="post" action="{{ route('dashboard.create') }}">--}}
-{{--                                @csrf--}}
-{{--                                --}}{{--                            <textarea class="card-bg-100 textarea w-full text-gray-200 rounded-lg w-full"--}}
-{{--                                --}}{{--                                      placeholder="Reply to {{$postComment->user->name}}'s comment .."--}}
-{{--                                --}}{{--                                      wire:model.defer="reply"--}}
-{{--                                --}}{{--                                      type="text">--}}
-
-{{--                                --}}{{--                            </textarea>--}}
-{{--                                <input type="text" name="reply" class="card-bg-100 textarea w-full text-gray-200 rounded-lg w-full" />--}}
-{{--                                <input type="hidden" name="post_id" value="{{ $post->id }}" />--}}
-{{--                                <input type="hidden" name="comment_id" value="{{ $reply->id }}" />--}}
-
-{{--                                <div class="flex justify-end">--}}
-{{--                                    <button class="rounded-xl  px-4 py-2 text-white accent-blue" type="submit">Reply</button>--}}
-{{--                                </div>--}}
-{{--                            </form>--}}
-{{--                        </div>--}}
-
-                    </div>
-
-                @endforeach
+                @include('partials.replies', ['comments' => $post->comments, 'post_id' => $post->id])
 {{--                    <x-replies :$comment->replies="reply" />--}}
             @endforeach
         </div>

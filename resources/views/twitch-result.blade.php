@@ -24,13 +24,13 @@
                 </thead>
                 <tbody>
                 @php($counter = 0)
-                @foreach($twitchUsers as $user )
+                @foreach($twitchUsers as $key => $user )
                     {{--                        {{$user}}--}}
 
                     @php($counter++)
                     <tr class="table-{{$counter}} border-b">
 
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-200">{{$counter}}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-200">{{$twitchUsers->firstItem() + $key}}</td>
 
                         <td class="text-sm text-gray-200 font-light  whitespace-nowrap relative">
                             {{--                                <svg class="absolute top-0 -left-1/3" width="25" height="auto" viewBox="0 0 234 179" fill="none" xmlns="http://www.w3.org/2000/svg">--}}

@@ -27,7 +27,7 @@ class ContendershipController extends Controller
     {
 
         $users = User::orderBy('score', 'desc')->paginate(10);
-        $twitchUsers = User::orderBy('twitch_score', 'desc')->paginate(10);
+//        $twitchUsers = User::orderBy('twitch_score', 'desc')->paginate(10);
 
         if ($request->ajax()) {
 

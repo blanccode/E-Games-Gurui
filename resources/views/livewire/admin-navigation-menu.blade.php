@@ -11,8 +11,6 @@
                     </a>
                 </div>
 
-
-
             </div>
 
             <div class="sm:ml-10 sm:flex ">
@@ -24,19 +22,30 @@
                         {{ __('News') }}
                     </x-jet-nav-link>
                 </div>
-                <div data-dropdown class="hidden text-white space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div data-dropdown class="hidden text-white space-x-8 sm:-my-px sm:ml-10 sm:flex relative">
                     <x-jet-nav-link data-dropdown-btn href="{{ route('contendership.index') }}" :active="request()->routeIs('contendership.index')">
+
                         <img width="28px" src="{{url('svgs/ranking-icon.svg')}}" >
 
                         {{ __('Contendership') }}
 
-                        <div data-drop-menu>
-                            <span class="block"> youtube drop</span>
-                        </div>
+
 
                     </x-jet-nav-link>
+                    <div data-drop-menu class=" ">
+                        <div data-drop class="block card-bg-100  py-3 rounded-b-md absolute left-0 space-x-8">
+                            <ul>
+                                <li class="p-2 ">
+                                    <a class="p-2" href="{{url('/contendership')}}">Youtube Ranking</a>
+                                </li>
+                                <li class="p-2">
+                                    <a class="p-2" href="{{url('/contendership/twitch-ranking')}}">Twitch Ranking</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="hidden text-white space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden text-white space-x-8 sm:-my-px sm:ml-0 sm:flex">
                     @if(auth()->user() && auth()->user()->role_id === 1 )
                     <x-jet-nav-link href="{{ route('admin.archive.index') }}" :active="request()->routeIs('admin.archive.index')">
                         <img width="32px" src="{{url('svgs/profile.svg')}}" >
@@ -55,7 +64,7 @@
 
                 </div>
                 <div class="hidden text-white space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('admin.products.index') }}" :active="request()->routeIs('admin.products.index')">
+                    <x-jet-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products.index')">
                         <img class="pr-1" width="27px"  src="{{url('svgs/shop.svg')}}" >
 
                         {{ __('Webshop') }}
@@ -167,7 +176,7 @@
                                 {{ __('Contendership') }}
                             </x-jet-dropdown-link>
 
-                            @if(auth()->user() && auth()->user()->role_id === 1 )
+{{--                            @if(auth()->user() && auth()->user()->role_id === 1 )--}}
 {{--                                <x-jet-dropdown-link href="{{ route('admin.archive.index') }}" :active="request()->routeIs('admin.articles.index')">--}}
 {{--                                    --}}{{--                                    <img width="32px" src="{{url('svgs/article.svg')}}" >--}}
 
@@ -178,12 +187,12 @@
                                     {{ __('Manage Account') }}
                                 </x-jet-dropdown-link>
 
-                            @else
-                                <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                    {{ __('Profile') }}
-                                </x-jet-dropdown-link>
+{{--                            @else--}}
+{{--                                <x-jet-dropdown-link href="{{ route('profile.show') }}">--}}
+{{--                                    {{ __('Profile') }}--}}
+{{--                                </x-jet-dropdown-link>--}}
 
-                            @endif
+{{--                            @endif--}}
 
 
                             @if(auth()->user() && auth()->user()->role_id === 1 )

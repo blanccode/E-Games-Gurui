@@ -18,6 +18,24 @@
 .yt-text {
     color: var(--yt-color);
 }
+[data-dropdown-btn]:hover ~ [data-drop-menu]{
+    opacity: 1;
+}
+[data-drop] {
+    bottom: -6em;
+}
+
+[data-drop] ul li:first-of-type {
+    border-bottom: 1px solid rgba(224, 224, 224, 0.2);
+}
+[data-drop-menu] {
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+[data-drop-menu]:hover {
+    opacity: 1;
+}
 
 .background {
     background-color: var(--background);

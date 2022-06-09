@@ -69,6 +69,18 @@
 {{--            </div>--}}
 
         </div>
+
+    </div>
+
+    <div class="mb-3">
+
+        <form wire:submit.prevent="submitStatus">
+            <textarea wire:model.defer="status" class="accent-bg textarea w-full text-gray-200 rounded-lg" type="text" name="text" required placeholder="Enter Status.."></textarea>
+            <div class="flex justify-end">
+                <button  class="accent-blue rounded-lg p-2 px-10 text-white" type="submit" >Submit</button>
+
+            </div>
+        </form>
     </div>
 
     <form class="pb-4 rounded-xxl card-bg-100 p-3"  wire:submit.prevent="createAdminPost" >

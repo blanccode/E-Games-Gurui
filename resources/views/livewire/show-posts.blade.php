@@ -48,7 +48,7 @@
                     </div >
 
                     <div x-data="{ open:true}" >
-                        <ul class="py-1 px-2 flex justify-between text-sm  accent-bg">
+                        <ul class="py-1 px-4 flex justify-center gap-x-4 text-sm  accent-bg">
                             @isset($post->likes)
                                 @php $likeCount=0 @endphp
                                 @foreach($post->likes as $key => $like)
@@ -104,10 +104,10 @@
                                         <img width="28px" height="auto" src="{{url('svgs/fb-icon.svg')}}">
 
                                     </a>
-                                    <a   class="twitter-share-button" target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost/posts/{{$post->id}}" >
-                                        <img width="28px" height="auto" src="{{url('svgs/linkedin-icon.svg')}}">
+{{--                                    <a   class="twitter-share-button" target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost/posts/{{$post->id}}" >--}}
+{{--                                        <img width="28px" height="auto" src="{{url('svgs/linkedin-icon.svg')}}">--}}
 
-                                    </a>
+{{--                                    </a>--}}
                                 </div>
                             </li>
 

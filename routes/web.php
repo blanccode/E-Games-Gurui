@@ -36,18 +36,23 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('articles', \App\Http\Controllers\Admin\NewsController::class);
 //        Route::get('/artikels/{id}', \App\Http\Livewire\Admin\NewsController::class)->name('artikels');
 //        Route::delete('/artikels/{new}', [\App\Http\Controllers\Admin\NewsController::class, 'destroy']);
-        Route::resource('products', \App\Http\Controllers\Admin\ProductController::class);
 
     });
+    Route::resource('products', \App\Http\Controllers\Admin\ProductController::class);
 
+//    Route::get('/post/show/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('post.show');
     Route::post('paypal-order', [\App\Http\Controllers\PaypalController::class, 'create']);
-
-
+    Route::post('/comment/store', [\App\Http\Controllers\CommentController::class , 'store'])->name('comment.add');
+    Route::post('/reply/store', [\App\Http\Controllers\CommentController::class, 'replyStore'])->name('reply.add');
     Route::get('/', function () {
         return view('dashboard');
     });
     Route::resource('articles/our-story', \App\Http\Controllers\OurStoryController::class);
     Route::resource('dashboard', \App\Http\Controllers\DashboardController::class);
+//    Route::post('/dashboard/replyStore', [\App\Http\Controllers\DashboardController::class,'replyStore']);
+
+    Route::post('/dashboard/create', [\App\Http\Controllers\DashboardController::class,'create']);
+
     Route::post('paypal-capture', [\App\Http\Controllers\PaypalController::class, 'capture']);
     Route::get('contendership/twitch-ranking',[\App\Http\Controllers\ContendershipController::class, 'twitchIndex']);
 

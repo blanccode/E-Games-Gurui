@@ -24,7 +24,7 @@
                         {{ __('News') }}
                     </x-jet-nav-link>
                 </div>
-                <div  class="hidden text-white space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div  class="hidden text-white space-x-8 -m-3 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link  href="{{ route('contendership.index') }}" :active="request()->routeIs('contendership.index')">
                         <img width="28px" src="{{url('svgs/ranking-icon.svg')}}" >
 
@@ -41,7 +41,7 @@
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden text-white space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('admin.products.index') }}" :active="request()->routeIs('admin.products.index')">
+                    <x-jet-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products.index')">
                         <img class="pr-1" width="27px"  src="{{url('svgs/shop.svg')}}" >
 
                         {{ __('Webshop') }}

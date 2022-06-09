@@ -48,6 +48,7 @@ class User extends Authenticatable
         'twitch_view_count',
         'twitch_followers',
         'twitch_score',
+        'status',
     ];
 
     public function latestPosts() {
@@ -81,16 +82,21 @@ class User extends Authenticatable
         return $this->hasMany(Like::class);
 
     }
+    public function commentlikes() {
+
+        return $this->hasMany(CommentLike::class);
+
+    }
     public function follows() {
 
         return $this->hasMany(Follow::class);
 
     }
-    public function comments() {
-
-        return $this->hasMany(Comment::class);
-
-    }
+//    public function comments() {
+//
+//        return $this->hasMany(Comment::class);
+//
+//    }
 
     public function postLikedOrUnliked($postId) {
         $likeRow = Auth::user()->likes()->where('post_id', $postId)->first();

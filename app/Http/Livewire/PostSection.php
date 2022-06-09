@@ -20,6 +20,7 @@ class PostSection extends Component
     public $image = null;
     public $video = null;
     public $comment;
+    public $status;
     protected $listeners = ['imageFile' => 'handleChosenImg','videoFile' => 'handleChosenVideo'];
     public $imageFile;
     public $videoFile;
@@ -98,6 +99,12 @@ class PostSection extends Component
     {
         $this->post = new Post();
 
+
+    }
+
+    public function submitStatus() {
+
+        User::where('id' , auth()->id())->update(['status' => $this->status]);
 
     }
 

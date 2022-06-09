@@ -9,9 +9,7 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'comment', 'post_id', 'user_id',
-    ];
+    protected $guarded = [];
 
     public function post() {
 
@@ -19,6 +17,13 @@ class Comment extends Model
     }
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function commentlikes() {
+        return $this->hasMany(CommentLike::class);
+    }
+    public function replies() {
+        return $this->hasMany(Comment::class, 'parent_id');
     }
 
 }
