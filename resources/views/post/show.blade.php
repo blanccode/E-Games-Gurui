@@ -6,3 +6,4 @@
     </div>
     <livewire:right-nav />
 </x-admin-app-layout>
+

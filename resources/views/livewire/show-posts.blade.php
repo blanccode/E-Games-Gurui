@@ -89,7 +89,8 @@
 
                                 <span data-share-btn class="pr-1" >Share</span>
 
-                                <img data-share-btn width="25px" class="pl-1.5" src="{{url('svgs/share.svg')}}">
+                                <img data-share-btn  width="35px" class="pl-1.5" src="{{url('svgs/turban.svg')}}">
+
 
 
 
@@ -139,43 +140,51 @@
         {{--                @endforeach--}}
 
         {{--            //////// COMMENTS-SECTION //////////--}}
-        @php $commentsCounter = 0 @endphp
 
-        @foreach($post->comments as $postComment)
-            @php $commentsCounter++ @endphp
-        @endforeach
+        <div class="">
 
-        <div class="card-bg-100 rounded-b-xl py-2 px-3" x-data="{ showComments:true}">
-
-            <div class=" flex justify-end">
-                @if($commentsCounter > 0)
-                    <button x-on:click="showComments = ! showComments" class="text-sm">{{$commentsCounter == 1 ?  '1 Comment' : $commentsCounter . ' Comments'}} </button>
-
-
-                @endif
-            </div>
-
-            @foreach($paginatedComments as $postComment)
-
-                <div x-bind:class="! showComments ? 'hidden' : ''"  class="pt-4 flex items-start w-full pb-3">
-                    <div class="flex pr-2">
-                        <img class="rounded-xl comment-user-img" src="{{$postComment->user->profile_photo_url}}">
-
-                    </div>
-                    <div class="flex-1 rounded-xl p-2 pt-0 accent-bg ">
-                        <h2 class="font-medium">{{$postComment->user->name}}:</h2>
-
-                        <p class="self-end text-sm">{{$postComment->comment}}</p>
-                    </div>
-                </div>
-
-            @endforeach
-
-            {{--                    <div class="pt-2">--}}
-            {{--                        {{$paginatedComments->links()}}--}}
-
-            {{--                    </div>--}}
+            @include('partials._comment_replies', ['comments' => $post->comments, 'post_id' => $post->id])
         </div>
+
+
+{{--        <x-posts.comments :post="$post"/>--}}
+{{--        @php $commentsCounter = 0 @endphp--}}
+
+{{--        @foreach($post->comments as $postComment)--}}
+{{--            @php $commentsCounter++ @endphp--}}
+{{--        @endforeach--}}
+
+{{--        <div class="card-bg-100 rounded-b-xl py-2 px-3" x-data="{ showComments:true}">--}}
+
+{{--            <div class=" flex justify-end">--}}
+{{--                @if($commentsCounter > 0)--}}
+{{--                    <button x-on:click="showComments = ! showComments" class="text-sm">{{$commentsCounter == 1 ?  '1 Comment' : $commentsCounter . ' Comments'}} </button>--}}
+
+
+{{--                @endif--}}
+{{--            </div>--}}
+
+{{--            @foreach($paginatedComments as $postComment)--}}
+
+{{--                <div x-bind:class="! showComments ? 'hidden' : ''"  class="pt-4 flex items-start w-full pb-3">--}}
+{{--                    <div class="flex pr-2">--}}
+{{--                        <img class="rounded-xl comment-user-img" src="{{$postComment->user->profile_photo_url}}">--}}
+
+{{--                    </div>--}}
+{{--                    <div class="flex-1 rounded-xl p-2 pt-0 accent-bg ">--}}
+{{--                        <h2 class="font-medium">{{$postComment->user->name}}:</h2>--}}
+
+{{--                        <p class="self-end text-sm">{{$postComment->comment}}</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
+{{--            @endforeach--}}
+
+{{--            --}}{{--                    <div class="pt-2">--}}
+{{--            --}}{{--                        {{$paginatedComments->links()}}--}}
+
+{{--            --}}{{--                    </div>--}}
+{{--        </div>--}}
 
 
 

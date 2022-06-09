@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -31,19 +32,9 @@ class DashboardController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
-        $comment = new Comment;
-
-        $comment->comment = $request->comment;
-
-        $comment->user()->associate($request->user());
-
-        $post = Post::find($request->post_id);
-
-        $post->comments()->save($comment);
-
-        return back();
+        return $request;
     }
 
 }

@@ -11,7 +11,6 @@
                         </p>
                         <hr />
                         <h4>Display Comments</h4>
-                        @include('partials._comment_replies', ['comments' => $post->comments, 'post_id' => $post->id])
                         <hr />
                         <form method="post" action="{{ route('comment.add') }}">
                             @csrf
@@ -27,6 +26,8 @@
                 </div>
             </div>
         </div>
+        @include('partials._comment_replies', ['comments' => $post->comments, 'post_id' => $post->id])
+
     </div>
 
 </x-admin-app-layout>

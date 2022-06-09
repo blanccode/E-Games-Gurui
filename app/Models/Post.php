@@ -12,6 +12,27 @@ class Post extends Model
 
     protected $guarded = [];
 
+    public function id(): int
+    {
+        return $this->id;
+    }
+
+    public function title(): string
+    {
+        return $this->title;
+    }
+
+    public function slug(): string
+    {
+        return $this->slug;
+    }
+
+    public function body(): string
+    {
+        return $this->body;
+    }
+
+
     public function user() {
 
         return $this->belongsTo(User::class);

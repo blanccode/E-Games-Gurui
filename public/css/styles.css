@@ -11,7 +11,10 @@
     --twitch-color: #694f93;
     --yt-color: #FF0000;
 }
-
+    /*.comment-border {*/
+    /*    border-radius: 1.5em;*/
+    /*    border: 1px solid white;*/
+    /*}*/
 .twitch-text {
     color: var(--twitch-color);
 }
