@@ -32,4 +32,14 @@ class CommentController extends Controller
         return back();
 
     }
+
+    public function show($id) {
+        $comment = Comment::find($id);
+
+
+//        dd($comment);
+        $id = $id;
+
+        return view('comment.show',compact('comment', 'id'));
+    }
 }

@@ -40,6 +40,11 @@
     opacity: 1;
 }
 
+.text-accent {
+   color: var(--accent-blue);
+
+}
+
 .background {
     background-color: var(--background);
 }
@@ -124,6 +129,7 @@
     /*grid-auto-row:1fr;*/
     gap: 1em;
     overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 .alerts {
@@ -530,6 +536,91 @@ input[type="radio"]:checked+label {
     background-size: 180% 180%;
     animation: gradient-animation 5s ease infinite;
 }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.textarea-container {
+    min-height: 100px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/*.first-word{*/
+/*    color: red;*/
+
+/*}*/
+
+
+/*.reply-area {*/
+/*    font: 1em/1.25em Arial, Helvetica, sans-serif;*/
+/*    border-left-width: 0px;*/
+/*    border-bottom-left-radius: 0;*/
+/*    border-top-left-radius: 0;*/
+
+/*}*/
+
+/*.reply-name {*/
+/*    padding-left: 1em;*/
+/*    padding-top: .25em;*/
+/*    border: 1px solid var(--accent-bg);*/
+/*    border-top-left-radius: 1rem;*/
+/*    border-bottom-left-radius: 1rem;*/
+/*    border-right-width: 0;*/
+/*    border-bottom-right-radius: 0;*/
+/*    border-top-right-radius: 0;*/
+
+/*}*/
+
+/*.focus {*/
+/*    !*border: 1px solid var(--accent-bg);*!*/
+/*    outline:1px solid var(--accent-blue) ;*/
+
+/*}*/
+
+/*!*[type='text']:focus,textarea:focus {*!*/
+/*!*    outline: none !important;*!*/
+/*!*    --tw-ring-inset: none;*!*/
+/*!*    outline:1px solid var(--accent-blue) ;*!*/
+/*!*    inset: revert;*!*/
+/*!*    border-left-width: 0 ;*!*/
+/*!*}*!*/
+
+
+
 @keyframes gradient-animation {
     0% {background-position: 0%}
     50% {background-position: 100%}

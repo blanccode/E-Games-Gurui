@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -29,5 +30,7 @@ class PostSeeder extends Seeder
             ],
 
         ]);
+
+            Post::factory()->count(5)->create();
     }
 }

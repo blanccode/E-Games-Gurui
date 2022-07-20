@@ -36,6 +36,8 @@ class DashboardPosts extends Component
         $likeRow = $user->likes()->where('post_id', $postId)->first();
 
         if (!$likeRow) {
+//            dd($likeRow);
+
             Like::create([
                 'user_id' => $user->id,
                 'post_id' => $postId,
@@ -43,14 +45,11 @@ class DashboardPosts extends Component
             ]);
 
             $this->isLiked = true;
-            $likeCount++;
-            $this->likes = $likeCount;
+
         } else {
             ///// User already liked current Post /////
             $likeRow->delete();
-
-            $likeCount--;
-            $this->likes = $likeCount;
+            $this->isLiked = false;
 
         }
 

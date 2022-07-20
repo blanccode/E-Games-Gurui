@@ -27,8 +27,7 @@ Route::get('redirects', '\App\Http\Controllers\RedirectsAfterLoginController@red
 
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'role:admin' , 'prefix' => 'admin', 'as' => 'admin.'], function () {
-        Route::get('archive/yt-profile',[\App\Http\Controllers\YoutubeController::class, 'index' ]);
-        Route::get('archive/twitch-profile',[\App\Http\Controllers\TwitchController::class, 'index' ]);
+
 
         Route::resource('archive',\App\Http\Controllers\Admin\UserController::class);
 //        Route::resource('/archive',\App\Http\Controllers\Admin\PostController::class);
@@ -38,6 +37,10 @@ Route::group(['middleware' => 'auth'], function() {
 //        Route::delete('/artikels/{new}', [\App\Http\Controllers\Admin\NewsController::class, 'destroy']);
 
     });
+
+    Route::get('archive/yt-profile',[\App\Http\Controllers\YoutubeController::class, 'index' ]);
+    Route::get('archive/twitch-profile',[\App\Http\Controllers\TwitchController::class, 'index' ]);
+
     Route::resource('products', \App\Http\Controllers\Admin\ProductController::class);
 
 //    Route::get('/post/show/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('post.show');
@@ -61,6 +64,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('contendership/youtube-ranking',\App\Http\Controllers\ContendershipController::class);
     Route::resource('users', \App\Http\Controllers\UserController::class);
     Route::resource('posts', \App\Http\Controllers\PostController::class);
+    Route::resource('comments', \App\Http\Controllers\CommentController::class);
     Route::post('uploadPost', [\App\Http\Controllers\PostController::class, 'uploadPost'])->name('posts.uploadPost');
 });
 

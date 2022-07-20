@@ -1,5 +1,6 @@
 <div class="p-6 pt-3">
     <h1 class="md:text-2xl pb-10">Profil</h1>
+
     @if (session()->has('message'))
 
         <div
@@ -35,18 +36,19 @@
 {{--        @endif--}}
         <div {{Auth::user()->youtube_account_id ? 'data-social-container' : ''}} class="yt-icon-container flex relative ">
 
-            <a data-social-btn  class="" href="{{url('admin/archive/yt-profile')}}">
+            <a data-social-btn  class="" href="{{url('archive/yt-profile')}}">
                     <img  width="32px"  src="{{url('svgs/yt-icon.svg')}}">
             </a>
 
             <x-social-links-drop data-social-content/>
 
-            <a data-social-btn  class="ml-4" href="{{url('admin/archive/twitch-profile')}}">
+            <a data-social-btn  class="ml-4" href="{{url('archive/twitch-profile')}}">
                 <svg width="28" height="auto" viewBox="0 0 118 124" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.04705 0L0 21.5408V107.694H29.4922V123.857H45.5932L61.679 107.694H85.8137L118 75.3966V0H8.04705ZM18.768 10.7635H107.274V70.0008L88.4959 88.8511H59L42.9193 104.993V88.8516H18.768V10.7635ZM48.2717 64.6225H59V32.3159H48.2717V64.6225ZM77.7703 64.6225H88.4963V32.3159H77.7703V64.6225Z" fill="#5A3E85"/>
                 </svg>
 
             </a>
+{{--            {{Auth::user()}}--}}
 
             <a class="ml-4" target="_blank" href="{{Auth::user()->twitter_channel_link}}">
 
@@ -224,93 +226,43 @@
                     @endisset
 
                     <div class="flex ">
-                        <li class="mr-2">
-                            <button class="flex items-center cursor-pointer" x-on:click="open = ! open">
-
-                                <svg width="28" height="" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M25.667 14.6666C22.7496 14.6666 19.9517 15.8256 17.8888 17.8885C15.8259 19.9514 14.667 22.7492 14.667 25.6666V55C14.667 57.9173 15.8259 60.7152 17.8888 62.7781C19.9517 64.841 22.7496 66 25.667 66H29.3337V73.3333C29.3335 73.982 29.5055 74.6192 29.8321 75.1798C30.1586 75.7403 30.6281 76.2042 31.1925 76.5241C31.7569 76.8439 32.3961 77.0083 33.0448 77.0005C33.6935 76.9926 34.3285 76.8128 34.885 76.4793L52.3457 66H62.3337C65.251 66 68.0489 64.841 70.1118 62.7781C72.1747 60.7152 73.3337 57.9173 73.3337 55V25.6666C73.3337 22.7492 72.1747 19.9514 70.1118 17.8885C68.0489 15.8256 65.251 14.6666 62.3337 14.6666H25.667Z" fill="#EEEEEE"/>
-                                </svg>
-                            </button>
-                        </li>
-                        <div data-share-container class="mr-5 share-container flex items-center cursor-pointer">
-                            {{--                                    <li class="cursor-pointer"  >--}}
-                            <div data-share-btn class="flex cursor-pointer">
-                                <img data-share-btn  width="23px" class="pl-1.5" src="{{url('svgs/share.svg')}}">
-                            </div>
-
-
-                            {{--                                    </li>--}}
-
-                            <div data-share-content class="share-content rounded-xl accent-bg">
-
-
-                                <a   class="twitter-share-button" target="_blank" href="https://twitter.com/intent/tweet?text=Hey, check out my post at &url=http://localhost/posts/{{$post->id}}" >
-                                    <img width="28px" height="auto" src="{{url('svgs/twitter.svg')}}">
-
-                                </a>
-                                <a   class="twitter-share-button" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost/posts/{{$post->id}}" >
-                                    <img width="28px" height="auto" src="{{url('svgs/fb-icon.svg')}}">
-
-                                </a>
-                                <a   class="twitter-share-button" target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost/posts/{{$post->id}}" >
-                                    <img width="28px" height="auto" src="{{url('svgs/linkedin-icon.svg')}}">
-
-                                </a>
-                            </div>
-                        </div>
+                        @include('partials.share_links')
                     </div>
-
-
 
                 </ul>
 
 
                 <div x-bind:class="! open ? 'hidden' : ''" class="py-3 px-3 w-full flex-col text-gray-700 justify-between accent-bg">
-                    {{--                                    <h1>{{$post->artikel}}</h1>--}}
-                    <form wire:submit.prevent="createComment({{  $post->id }})">
-                        <textarea class="card-bg-100 textarea w-full text-gray-200 rounded-lg" placeholder="make a comment here" class="w-full" wire:model.defer="comment" type="text"></textarea>
-                        <div class="flex justify-end">
-                            <button class="rounded-xl  px-4 py-2 text-white accent-blue" type="submit">Comment</button>
+                {{--                                    <h1>{{$post->artikel}}</h1>--}}
+                <form wire:submit.prevent="createComment({{  $post->id }})">
+                    <textarea class="card-bg-100 textarea w-full text-gray-200 rounded-lg" placeholder="make a comment here" class="w-full" wire:model.defer="comment" type="text"></textarea>
+                    <div class="flex justify-end">
+                        <button class="rounded-xl  px-4 py-2 text-white accent-blue" type="submit">Comment</button>
 
-                        </div>
-                    </form>
+                    </div>
+                </form>
                 </div>
 
             </div>
 
-            @php $commentsCounter = 0 @endphp
-
-            @foreach($post->comments as $postComment)
-                @php $commentsCounter++ @endphp
-            @endforeach
-
-            <div class="card-bg-100 rounded-b-xl py-2 px-3" x-data="{ showComments:false}">
-
-                <div class=" flex justify-end">
-                    <button x-on:click="showComments = ! showComments" class="text-sm">{{$commentsCounter != 0 ? $commentsCounter . ' Comments' : ''}} </button>
-                </div>
+                @php $commentsCounter = 0 @endphp
 
                 @foreach($post->comments as $postComment)
+                @php $commentsCounter++ @endphp
+                @endforeach
 
+                <div class="card-bg-100 rounded-b-xl py-2 px-3" x-data="{ showComments:false}">
 
-                    <div x-bind:class="! showComments ? 'hidden' : ''"  class="pt-4 flex items-start w-full pb-3">
-                        <div class="flex pr-2">
-                            <img class="rounded-xl" width="50px" height="auto" src="{{$post->user->profile_photo_url}}">
-
-                        </div>
-                        <div class="flex-1 rounded-xl p-2 pt-0 accent-bg ">
-                            <h2 class="font-medium">{{$post->user->name}}:</h2>
-
-                            <p class="self-end text-sm">{{$postComment->comment}}</p>
-                        </div>
+                    <div class=" flex justify-end">
+                        <button x-on:click="showComments = ! showComments" class="text-sm">{{$commentsCounter != 0 ? $commentsCounter . ' Comments' : ''}} </button>
                     </div>
 
 
-                @endforeach
+                    @include('partials._comment_replies', ['comments' => $post->comments, 'post_id' => $post->id])
+                </div>
+
+
             </div>
-
-
-        </div>
 
         @endforeach
 
@@ -348,35 +300,35 @@
 {{--</script>--}}
 
 <script>
-    Livewire.on('imageChosen', () => {
-        console.log('dskjsikj')
-        let imagePrewiev = document.querySelector('[data-image-chosen]')
-        console.log(imagePrewiev);
+Livewire.on('imageChosen', () => {
+console.log('dskjsikj')
+let imagePrewiev = document.querySelector('[data-image-chosen]')
+console.log(imagePrewiev);
 
-        let file = imagePrewiev.files[0];
+let file = imagePrewiev.files[0];
 
-        const reader = new FileReader();
-        console.log(reader);
-        reader.onloadend = (e) => {
-            photoPreview = e.target.result;
-            Livewire.emit('imageFile', [file.name, reader.result])
-            console.log(file.name)
+const reader = new FileReader();
+console.log(reader);
+reader.onloadend = (e) => {
+photoPreview = e.target.result;
+Livewire.emit('imageFile', [file.name, reader.result])
+console.log(file.name)
 
-        };
-        reader.readAsDataURL(file);
-    })
-    Livewire.on('videoChosen', () => {
+};
+reader.readAsDataURL(file);
+})
+Livewire.on('videoChosen', () => {
 
-        let videoPrewiev = document.querySelector('[data-video-chosen]')
-        let videoFile = videoPrewiev.files[0];
+let videoPrewiev = document.querySelector('[data-video-chosen]')
+let videoFile = videoPrewiev.files[0];
 
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            Livewire.emit('videoFile', reader.result)
-            console.log(reader.result)
+const reader = new FileReader();
+reader.onloadend = () => {
+Livewire.emit('videoFile', reader.result)
+console.log(reader.result)
 
-        };
-        reader.readAsDataURL(videoFile);
-    })
+};
+reader.readAsDataURL(videoFile);
+})
 </script>
 

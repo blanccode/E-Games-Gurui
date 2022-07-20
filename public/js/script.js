@@ -31,6 +31,7 @@ window.addEventListener("load", function () {
 
     })
 
+    /*///////// OPEN CLOSE SHARE LINKS //////////*/
 
 
     document.addEventListener('click', e => {
@@ -72,5 +73,17 @@ window.addEventListener("load", function () {
 
         })
     })
+
+    /*///////// TEXTAREA LOGIC //////////*/
+
+
+    //     document.addEventListener('click', (e) => {
+    //         if (area === document.activeElement) {
+    //             console.log(area.previousElementSibling.classList.add('focus'))
+    //
+    //         } else {
+    //             area.previousElementSibling.classList.remove('focus')
+    //         }
+    //     })
 
 })

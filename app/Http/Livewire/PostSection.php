@@ -99,12 +99,17 @@ class PostSection extends Component
     {
         $this->post = new Post();
 
+        $user = User::where('id',auth()->id())->first();
+        $this->status = $user->status;
+
 
     }
 
     public function submitStatus() {
 
         User::where('id' , auth()->id())->update(['status' => $this->status]);
+        session()->flash('message', 'Status successfully updated.');
+
 
     }
 
@@ -139,6 +144,7 @@ class PostSection extends Component
         $this->imageFile = '';
         $this->videoFile = '';
 
+        session()->flash('message', 'Post successfully created.');
 
     }
     public function render()

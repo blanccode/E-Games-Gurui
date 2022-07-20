@@ -5,13 +5,22 @@ namespace App\Models;
 use App\Traits\HasCommentable;
 use App\Traits\HasReplies;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+//use Cog\Contracts\Love\Reactable\Models\Reactable as ReactableInterface;
+//use Cog\Laravel\Love\Reactable\Models\Traits\Reactable;
+
 use Illuminate\Database\Eloquent\Model;
 
+
+
 class Comment extends Model
+//    implements ReactableInterface
 {
     use HasFactory;
     use HasCommentable;
     use HasReplies;
+
+//    use Reactable;
 
 
     protected $with = [
