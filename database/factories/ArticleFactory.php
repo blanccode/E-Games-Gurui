@@ -17,7 +17,7 @@ class ArticleFactory extends Factory
             'user_id' => 1,
             'title' => 'A Wonderfull Article Title',
             'text' => 'Article Text here..',
-            'image' => 'https://picsum.photos/200/300',
+            'image' => '',
             'read_duration' => 3,
         ];
     }

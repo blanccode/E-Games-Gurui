@@ -5,19 +5,22 @@
 
             <a href="{{url('articles/our-story/'. $article->id)}}" class="articles-items relative -z-1 rounded-articles">
 
-{{--                @forelse()--}}
-{{--                    --}}
-{{--                    @else--}}
-{{--                @endforelse--}}
-                @if(App::environment('local'))
 
-                    <img class="articles-item rounded-articles"  src="{{url( $article->image)}}"/>
+                    @if(!empty($article->image))
 
-                @elseif(!empty($article->image))
+                        <img class="articles-item rounded-articles"  src="{{url('storage/articles/images/' . $article->image)}}"/>
 
-                    <img class="articles-item rounded-articles"  src="{{url('storage/articles/images/' . $article->image)}}"/>
+                    @endif
 
-                @endif
+{{--                @if(App::environment('local'))--}}
+
+{{--                    <img class="articles-item rounded-articles"  src="{{url( $article->image)}}"/>--}}
+
+{{--                @elseif(!empty($article->image))--}}
+
+{{--                    <img class="articles-item rounded-articles"  src="{{url('storage/articles/images/' . $article->image)}}"/>--}}
+
+{{--                @endif--}}
 
                 @if(!empty($article->video))
                     <video class="articles-item rounded-articles"  preload="metadata" controls>

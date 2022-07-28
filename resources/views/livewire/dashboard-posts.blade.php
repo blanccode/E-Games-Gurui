@@ -26,17 +26,23 @@
                     <div>
                         <div data-post-container class="post-cont ">
 
-                            @if(!empty($post->image) && !App::environment('local'))
+                            @if(!empty($post->image))
 
-                                <img data-post-content class="post-image rounded-t-xl "  src="{{url('storage/articles/images/' . $post->image)}}"/>
-
-
-                            @elseif(App::environment('local'))
-
-{{--                                <img data-post-content class="post-image rounded-t-xl "  src="{{url( $post->image)}}"/>--}}
-                                <img data-post-content class="post-image rounded-t-xl "  src="{{$post->image}}"/>
+                                {{--                                <img data-post-content class="post-image rounded-t-xl "  src="{{$post->image}}"/>--}}
+                                <img data-post-content class="post-image rounded-t-xl "  src="{{url('storage/images/' . $post->image)}}"/>
 
                             @endif
+{{--                            @if(App::environment('local'))--}}
+
+
+{{--                                <img data-post-content class="post-image rounded-t-xl "  src="{{$post->image}}"/>--}}
+
+{{--                            @elseif(!empty($post->image))--}}
+
+{{--                                <img data-post-content class="post-image rounded-t-xl "  src="{{url('storage/articles/images/' . $post->image)}}"/>--}}
+
+
+{{--                            @endif--}}
 
 {{--                            @if(!empty($post->image))--}}
 {{--                                <img data-post-content class="post-image rounded-t-xl "  src="{{url( $post->image)}}"/>--}}

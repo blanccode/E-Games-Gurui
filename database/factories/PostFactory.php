@@ -18,8 +18,7 @@ class PostFactory extends Factory
         $filePath = storage_path('images');
          return [
              'user_id' => 1,
-             'text' => 'random text',
-             'image' => 'https://picsum.photos/200/300',
+             'text' => 'some text',
              'created_at' => Carbon::now()->toDateTimeString(),
          ];
     }

@@ -122,19 +122,13 @@ class YtSection extends Component
 //            'youtube_account_id' => $this->channelId,
 //        ];
 
-
-
-
         if ($this->channelId) {
             $channelId = $this->channelId;
 
             $this->channelData = $this->getChannel($channelId);
             $this->score = $this->calcScore($this->channelData['yt_channel_views'],$this->channelData['yt_channel_subs'],$this->channelData['yt_channel_video_count']);
 
-
             User::where('id', auth()->id())->update($this->getYtFieldsData($channelId));
-
-//
 
         }
 
