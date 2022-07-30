@@ -41,7 +41,7 @@
             @endif
 
             <!-- Page Content -->
-            <main class="background sm:flex justify-between mx-auto pt-4">
+            <main class="background justify-between mx-auto pt-4">
 
                 {{ $slot }}
 

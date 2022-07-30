@@ -10,6 +10,7 @@
     --accent-blue-5: #0d4080;
     --twitch-color: #694f93;
     --yt-color: #FF0000;
+    --main-sec-margin: 1rem;
 }
     /*.comment-border {*/
     /*    border-radius: 1.5em;*/
@@ -390,7 +391,7 @@ main {
     border-radius: 1.5em;
 }
 main {
-    max-width: 100rem;
+    max-width: 1500px;
 }
 
 .input-filler-color::placeholder {
@@ -641,13 +642,19 @@ input[type="radio"]:checked+label {
 @media (min-width: 640px) {
 
     .navs {
-        flex:3.5;
-        max-width: 23%;
+        /*flex:2;*/
+        /*min-width: 20%;*/
+        width: calc(20%);
+
+
 
     }
     .main-section {
-        flex: 10;
-        max-width: 60%;
+        /*flex: 6;*/
+        margin-left: var(--main-sec-margin);
+        margin-right: var(--main-sec-margin);
+        /*width: 60%;*/
+        width: calc(60% - (var(--main-sec-margin) * 2));
     }
 }
 
