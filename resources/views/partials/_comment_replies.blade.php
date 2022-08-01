@@ -2,14 +2,8 @@
 
 
 
-@php($level = 0) @endphp
-{{--{{count($likeArray)}}--}}
 
-{{--@foreach($likeArray as $value)--}}
-{{--    {{$value}}--}}
-{{--@endforeach--}}
-
-    @foreach($comments as $key => $comment)
+@foreach($comments as $key => $comment)
 {{--{{$comment->comment}}--}}
 @if(isset($replies))
 
@@ -39,7 +33,7 @@
 
                         @isset($comment->commentLikes)
 
-                            <li class="cursor-pointer flex items-center" wire:click="likeComment({{$comment->id}}, {{count($comment->commentLikes)}})">
+                            <li class="cursor-pointer flex items-center" wire:click="likeComment({{$comment->id}}, {{isset($comment->commentLikes) ? count($comment->commentLikes) : ''}})">
                                 <div class="flex">
 {{--                                    {{$isLikeByUser ?? $isLikeByUser ? 'hello' : 'jksdfnbdjkfndjk'}}--}}
 {{--                                    {{$LikeCount}}--}}

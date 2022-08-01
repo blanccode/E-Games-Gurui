@@ -1,3 +1,4 @@
+{{--
 <nav x-data="{ open: false }" class="card-bg text-white">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 text-white text lg:px-8">
@@ -33,7 +34,7 @@
 
                     </x-jet-nav-link>
                 </div>
-                <div class="hidden text-white space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div id="profile" class="hidden text-white space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                         <img width="32px" src="{{url('svgs/profile.svg')}}" >
 
@@ -273,3 +274,13 @@
         </div>
     </div>
 </nav>
+<script >
+    $( ".profile" ).click(function(e) {
+        e.preventDefault()
+
+        $( ".background" ).load( "/admin/archive" );
+
+        console.log('skjdnk')
+    });
+</script>
+--}}

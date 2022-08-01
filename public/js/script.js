@@ -74,6 +74,13 @@ window.addEventListener("load", function () {
         })
     })
 
+
+
+
+    // $('#profile').load(document.URL +  ' .background');
+
+
+
     /*///////// TEXTAREA LOGIC //////////*/
 
 

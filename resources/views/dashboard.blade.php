@@ -1,5 +1,4 @@
 <x-admin-app-layout>
-    <livewire:left-nav />
 
     <div class="p-4.5 main-section " >
         <livewire:articles-section/>
@@ -8,7 +7,6 @@
 
         </div>
     </div>
-    <livewire:right-nav />
 </x-admin-app-layout>
 
 

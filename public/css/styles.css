@@ -318,7 +318,7 @@ input[type="file"] {
 }
 
 main {
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 
@@ -621,6 +621,11 @@ input[type="radio"]:checked+label {
 /*!*}*!*/
 
 
+.right-nav {
+    /*right: 0;*/
+    /*position: fixed;*/
+}
+
 
 @keyframes gradient-animation {
     0% {background-position: 0%}
@@ -642,11 +647,12 @@ input[type="radio"]:checked+label {
 @media (min-width: 640px) {
 
     .navs {
+        /*position: sticky;*/
+        /*top:0;*/
         /*flex:2;*/
         /*min-width: 20%;*/
         width: calc(20%);
-
-
+        /*position: fixed;*/
 
     }
     .main-section {
@@ -654,6 +660,9 @@ input[type="radio"]:checked+label {
         margin-left: var(--main-sec-margin);
         margin-right: var(--main-sec-margin);
         /*width: 60%;*/
+        /*margin: 0 auto;*/
+        /*position: relative;*/
+        /*top: 0;*/
         width: calc(60% - (var(--main-sec-margin) * 2));
     }
 }

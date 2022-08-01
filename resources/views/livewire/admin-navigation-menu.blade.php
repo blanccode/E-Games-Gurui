@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="card-bg text-white">
+    <nav x-data="{ open: false }" class="card-bg text-white">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 text-white text lg:px-8">
         <div class="flex justify-between h-16">
@@ -15,7 +15,7 @@
 
             <div class="sm:ml-10 sm:flex ">
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:flex">
+                <div id="" class="hidden space-x-8 sm:-my-px sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard.index') }}" :active="request()->routeIs('dashboard.index')">
                         <img width="30px" src="{{url('svgs/home.svg')}}" >
 
@@ -45,9 +45,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="hidden text-white space-x-8 sm:-my-px sm:ml-0 sm:flex">
+                <div  class="profile hidden text-white space-x-8 sm:-my-px sm:ml-0 sm:flex">
                     @if(auth()->user() && auth()->user()->role_id === 1 )
-                    <x-jet-nav-link href="{{ route('admin.archive.index') }}" :active="request()->routeIs('admin.archive.index')">
+                    <x-jet-nav-link href="{{route('admin.archive.index')}}" :active="request()->routeIs('admin.archive.index')">
                         <img width="32px" src="{{url('svgs/profile.svg')}}" >
 
                         {{ __('Profil') }}
@@ -328,3 +328,4 @@
         </div>
     </div>
 </nav>
+

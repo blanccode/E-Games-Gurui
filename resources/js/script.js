@@ -14,3 +14,6 @@ loadScript({ "client-id": "EPAJhzkROmLmeYW2cmS6kN8ofSC2utNcPDx63V4sLjHVCGUDsCY6d
     });
 
 // loadScript({ "client-id": "EPAJhzkROmLmeYW2cmS6kN8ofSC2utNcPDx63V4sLjHVCGUDsCY6dYeUdY9k6xE1y443O1y2ZxmdQuxs", currency: "EUR" });
+
+
+
